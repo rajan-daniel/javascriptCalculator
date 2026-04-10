@@ -1,8 +1,10 @@
 const calc = document.getElementById("calculator");
 const display = document.getElementById("display");
+const history = document.getElementById("history");
 
 let result = "";
 let initialState = 0;
+let lastButtonPressed = "";
 
 const buttons = [
     { id: "equals", symbol: "=" },
@@ -64,19 +66,53 @@ const removeConsecutiveSymbols = () => {
     result = outputArr.join("");
 }
 
+const removeConsecutiveDecimals = () => {
+    const inputArr = convertResultToArray();
+    const operator = ["."];
+    let outputArr = [];
+
+    for (let i = 0; i < inputArr.length; i++) {
+        if (operator.includes(inputArr[i])) {
+            if (operator.includes(outputArr[outputArr.length - 1])) {
+                outputArr[outputArr.length - 1] = inputArr[i];
+            } else {
+
+                outputArr.push(inputArr[i]);
+            }
+        } else {
+            outputArr.push(inputArr[i]);
+        }
+        result = outputArr.join("");
+    }
+}
+
 const handleButtonPress = (symbol) => {
     if (result.startsWith(0)) {
         result = ""
+        lastButtonPressed = symbol;
     }
     if (symbol === "C") {
         result = `${initialState}`;
+        lastButtonPressed = symbol;
     } else if (symbol === "=") {
         removeConsecutiveSymbols();
+        removeConsecutiveDecimals();
+        history.textContent = result;
         result = eval(result).toString();
+        lastButtonPressed = symbol;
+    } else if (symbol === ".") {
+        if (lastButtonPressed === ".") {
+            null;
+        } else {
+            result += symbol;
+            lastButtonPressed = symbol;
+        }
     } else {
         result += symbol;
+        lastButtonPressed = symbol;
     }
     display.textContent = result;
+    console.log(lastButtonPressed);
 };
 
 drawButtons();

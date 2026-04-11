@@ -2,10 +2,6 @@ const calc = document.getElementById("calculator");
 const display = document.getElementById("display");
 const history = document.getElementById("history");
 
-let result = "";
-let initialState = 0;
-let lastButtonPressed = "";
-
 const buttons = [
     { id: "equals", symbol: "=" },
     { id: "zero", symbol: "0" },
@@ -36,83 +32,79 @@ const drawButtons = () => {
     })
 }
 
-const convertResultToArray = () => {
-    const charHolder = []
-    for (const char of result) {
-        charHolder.push(char);
-    }
-    return charHolder;
-}
-
-const removeConsecutiveSymbols = () => {
-    const inputArr = convertResultToArray();
-    const operator = ["+", "-", "*", "/"];
-    let outputArr = [];
-
-    for (let i = 0; i < inputArr.length; i++) {
-        if (operator.includes(inputArr[i])) {
-            // if prev is a symbol
-            if (operator.includes(outputArr[outputArr.length - 1])) {
-                outputArr[outputArr.length - 1] = inputArr[i];
-            } else {
-                // when it catches first symbol
-                outputArr.push(inputArr[i]);
-            }
-        } else {
-            // if its a num
-            outputArr.push(inputArr[i]);
-        }
-    }
-    result = outputArr.join("");
-}
-
-const removeConsecutiveDecimals = () => {
-    const inputArr = convertResultToArray();
-    const operator = ["."];
-    let outputArr = [];
-
-    for (let i = 0; i < inputArr.length; i++) {
-        if (operator.includes(inputArr[i])) {
-            if (operator.includes(outputArr[outputArr.length - 1])) {
-                outputArr[outputArr.length - 1] = inputArr[i];
-            } else {
-
-                outputArr.push(inputArr[i]);
-            }
-        } else {
-            outputArr.push(inputArr[i]);
-        }
-        result = outputArr.join("");
-    }
-}
-
 const handleButtonPress = (symbol) => {
-    if (result.startsWith(0)) {
-        result = ""
-        lastButtonPressed = symbol;
-    }
-    if (symbol === "C") {
-        result = `${initialState}`;
-        lastButtonPressed = symbol;
-    } else if (symbol === "=") {
-        removeConsecutiveSymbols();
-        removeConsecutiveDecimals();
-        history.textContent = result;
-        result = eval(result).toString();
-        lastButtonPressed = symbol;
-    } else if (symbol === ".") {
-        if (lastButtonPressed === ".") {
-            null;
+    const currentDisplay = display.textContent.split("");
+    const lastChar = currentDisplay[currentDisplay.length - 1];
+    console.log(`Last Character is: ${lastChar}`);
+    //console.log(currentDisplay);
+
+    //----------------HANDLES INITIAL BUTTON PRESS TO CLEAR DISPLAY------------------------//
+    if (lastChar == 0 && currentDisplay.length == 1 && (symbol != "=" && symbol != "C")) {
+        console.log("stars zero");
+        display.textContent = "";
+        display.textContent += symbol;
+        return;
+        //---------------------------------------------------------------//
+
+        //----------------HANDLES CLEAR AND EQUAL------------------------//
+    } else if (symbol == "C") {
+        history.textContent = "0";
+        display.textContent = "0";
+    } else if (symbol == "=") {
+        history.textContent = display.textContent;
+        display.textContent = eval(display.textContent);
+        return;
+        //---------------------------------------------------------------//
+
+        //----------------HANDLES "-" EDGE CASES------------------------//
+    } else if (symbol == "-") {
+        if (lastChar == "-") {
+            currentDisplay[(currentDisplay.length - 1)] = symbol;
+            display.textContent = currentDisplay.join("");
+            return;
+        } else if (lastChar == "+" || lastChar == "*" || lastChar == "/") {
+            display.textContent += symbol;
+            return;
         } else {
-            result += symbol;
-            lastButtonPressed = symbol;
+            display.textContent += symbol;
+            return;
         }
-    } else {
-        result += symbol;
-        lastButtonPressed = symbol;
+    } else if (lastChar == "-") {
+        if (symbol == "+" || symbol == "-" || symbol == "*" || symbol == "/") {
+            currentDisplay.pop()
+            currentDisplay[(currentDisplay.length - 1)] = symbol;
+            display.textContent = currentDisplay.join("");
+            return;
+        } else {
+            display.textContent += symbol;
+            return;
+        }
+        //---------------------------------------------------------------//
+
+        //----------------HANDLES OPERATORS------------------------//
+    } else if (symbol == "+" || symbol == "-" || symbol == "*" || symbol == "/") {
+        if (lastChar == "+" || lastChar == "-" || lastChar == "*" || lastChar == "/") {
+            currentDisplay[(currentDisplay.length - 1)] = symbol;
+            display.textContent = currentDisplay.join("");
+            return;
+        } else {
+            display.textContent += symbol;
+            return;
+        }
     }
-    display.textContent = result;
-    console.log(lastButtonPressed);
+    //---------------------------------------------------------------//
+
+    //----------------HANDLES INPUTTING NUMBERS------------------------//
+    else {
+        display.textContent += symbol;
+        return;
+    }
+    //---------------------------------------------------------------//
 };
 
 drawButtons();
+
+window.onload = function () {
+    history.textContent = "0";
+    display.textContent = "0";
+};

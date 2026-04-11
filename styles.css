@@ -1,51 +1,19 @@
-/*    
-    { id: "equals", symbol: "=" },
-    { id: "zero", symbol: "0" },
-    { id: "one", symbol: "1" },
-    { id: "two", symbol: "2" },
-    { id: "three", symbol: "3" },
-    { id: "four", symbol: "4" },
-    { id: "five", symbol: "5" },
-    { id: "six", symbol: "6" },
-    { id: "seven", symbol: "7" },
-    { id: "eight", symbol: "8" },
-    { id: "nine", symbol: "9" },
-    { id: "add", symbol: "+" },
-    { id: "subtract", symbol: "-" },
-    { id: "multiply", symbol: "*" },
-    { id: "divide", symbol: "/" },
-    { id: "decimal", symbol: "." },
-    { id: "clear", symbol: "C" }
-*/
 :root {
     --tray: #1C1C1C;
     --accent-color: #FF9500;
     --button-color: #505050;
     --function-color: #D4D4D2;
     font-size: 40px;
-    border: 2px solid green
+    background-color: #000000;
 }
 
 button {
-    width: 100px;
+    width: 100%;
     height: 100px;
+    border-radius: 50px;
+    border: none;
     font-size: 40px;
-    border: 0;
-    border-radius: 50%;
-}
-
-#calculator div {
-    
-}
-
-#calculator-display{
-    display: flex;
-    justify-content: center;
-}
-
-#calculator-controls {
-    display: grid;
-    grid-template-columns: 100px 100px 100px 100px;
+    cursor: pointer;
 }
 
 #add, 
@@ -74,9 +42,11 @@ button {
    background-color: var(--button-color); 
 }
 
-#history,
+#history {
+    color: var(--accent-color);
+}
 #display {
-
+    color: var(--function-color);
 }
 
 #clear, 
@@ -86,4 +56,39 @@ button {
 
 #zero {
    grid-column: span 2; 
+}
+
+#history, 
+#display {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0px 60px;
+    background-color: var(--button-color);
+    border-radius: 15px;
+    margin: 40px;
+    overflow: hidden;
+}
+
+#calculator-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    padding: 40px
+}
+
+#calculator {
+    background-color: var(--tray);
+    border-radius: 15px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+#calculator-display {
+    width: 100%;
+    text-align: right;
+}
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: var(--accent-color);
+    padding: 20px
 }

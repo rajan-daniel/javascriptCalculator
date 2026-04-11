@@ -56,7 +56,7 @@ const handleButtonPress = (symbol) => {
         display.textContent = "0";
     } else if (symbol == "=") {
         history.textContent = display.textContent;
-        display.textContent = eval(display.textContent);
+        display.textContent = eval(display.textContent).toFixed(2);
         return;
         //---------------------------------------------------------------//
 

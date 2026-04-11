@@ -56,7 +56,8 @@ const handleButtonPress = (symbol) => {
         return;
         //---------------------------------------------------------------//
 
-        //----------------HANDLES "-" EDGE CASES------------------------//
+
+        //----------------HANDLES "-" EDGE CASES------------------------//    
     } else if (symbol == "-") {
         if (lastChar == "-") {
             currentDisplay[(currentDisplay.length - 1)] = symbol;
@@ -93,9 +94,17 @@ const handleButtonPress = (symbol) => {
         }
     }
     //---------------------------------------------------------------//
-
-    //----------------HANDLES INPUTTING NUMBERS------------------------//
-    else {
+    //----------------HANDLES DOT OPERATOR-----------------------------//
+    else if (symbol == ".") {
+        const currentDisplay = display.textContent.split(/[\+\-\*\/]/);
+        if (!currentDisplay[currentDisplay.length - 1].includes(".")) {
+            display.textContent += symbol;
+        } else {
+            return;
+        }
+        //---------------------------------------------------------------//
+        //----------------HANDLES INPUTTING NUMBERS------------------------//
+    } else {
         display.textContent += symbol;
         return;
     }

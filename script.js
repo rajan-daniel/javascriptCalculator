@@ -1,25 +1,29 @@
-const calc = document.getElementById("calculator");
+const calc = document.getElementById("calculator-controls");
 const display = document.getElementById("display");
 const history = document.getElementById("history");
 
 const buttons = [
+    { id: "clear", symbol: "C" },
     { id: "equals", symbol: "=" },
-    { id: "zero", symbol: "0" },
-    { id: "one", symbol: "1" },
-    { id: "two", symbol: "2" },
-    { id: "three", symbol: "3" },
-    { id: "four", symbol: "4" },
-    { id: "five", symbol: "5" },
-    { id: "six", symbol: "6" },
+
     { id: "seven", symbol: "7" },
     { id: "eight", symbol: "8" },
     { id: "nine", symbol: "9" },
-    { id: "add", symbol: "+" },
-    { id: "subtract", symbol: "-" },
-    { id: "multiply", symbol: "*" },
     { id: "divide", symbol: "/" },
+
+    { id: "four", symbol: "4" },
+    { id: "five", symbol: "5" },
+    { id: "six", symbol: "6" },
+    { id: "multiply", symbol: "*" },
+
+    { id: "one", symbol: "1" },
+    { id: "two", symbol: "2" },
+    { id: "three", symbol: "3" },
+    { id: "subtract", symbol: "-" },
+
+    { id: "zero", symbol: "0" },
     { id: "decimal", symbol: "." },
-    { id: "clear", symbol: "C" }
+    { id: "add", symbol: "+" }
 ];
 
 const drawButtons = () => {

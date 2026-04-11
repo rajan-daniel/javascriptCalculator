@@ -1,12 +1,89 @@
+/*    
+    { id: "equals", symbol: "=" },
+    { id: "zero", symbol: "0" },
+    { id: "one", symbol: "1" },
+    { id: "two", symbol: "2" },
+    { id: "three", symbol: "3" },
+    { id: "four", symbol: "4" },
+    { id: "five", symbol: "5" },
+    { id: "six", symbol: "6" },
+    { id: "seven", symbol: "7" },
+    { id: "eight", symbol: "8" },
+    { id: "nine", symbol: "9" },
+    { id: "add", symbol: "+" },
+    { id: "subtract", symbol: "-" },
+    { id: "multiply", symbol: "*" },
+    { id: "divide", symbol: "/" },
+    { id: "decimal", symbol: "." },
+    { id: "clear", symbol: "C" }
+*/
 :root {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    --tray: #1C1C1C;
+    --accent-color: #FF9500;
+    --button-color: #505050;
+    --function-color: #D4D4D2;
     font-size: 40px;
+    border: 2px solid green
 }
 
 button {
     width: 100px;
     height: 100px;
     font-size: 40px;
+    border: 0;
+    border-radius: 50%;
+}
+
+#calculator div {
+    
+}
+
+#calculator-display{
+    display: flex;
+    justify-content: center;
+}
+
+#calculator-controls {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+}
+
+#add, 
+#subtract, 
+#divide, 
+#multiply,
+#equals {
+    background-color: var(--accent-color);
+}
+
+#clear {
+    background-color: var(--function-color);
+}
+
+#zero,
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#decimal {
+   background-color: var(--button-color); 
+}
+
+#history,
+#display {
+
+}
+
+#clear, 
+#equals {
+    grid-column: span 2;
+}
+
+#zero {
+   grid-column: span 2; 
 }

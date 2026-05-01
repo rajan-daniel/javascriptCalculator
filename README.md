@@ -1,47 +1,55 @@
 ## 🧮 JavaScript Calculator (HTML, CSS & JavaScript Project)
 
 ### 📌 Preview  
-A fully functional calculator web application built using vanilla JavaScript that performs basic arithmetic operations such as addition, subtraction, multiplication, and division through a clean and responsive user interface.
+A fully functional calculator web application built using vanilla JavaScript that performs basic arithmetic operations such as addition, subtraction, multiplication, and division. The UI is dynamically generated and styled with a clean, modern layout.
 
 ---
 
 ### 📖 About the Project  
-The **JavaScript Calculator** is a classic front-end project built entirely with HTML, CSS, and JavaScript, without using any frameworks or libraries. It replicates the behavior of a standard calculator, allowing users to perform chained calculations and manage inputs dynamically.
+The **JavaScript Calculator** is a front-end project built entirely with HTML, CSS, and JavaScript without using any frameworks or libraries. It mimics a basic calculator interface where users can perform chained calculations through button interactions.
 
-The main focus of this project was building robust **calculation logic from scratch** and handling user interactions directly through DOM manipulation. Each button press updates the display and modifies the internal state used for computations.
+Unlike static implementations, the calculator buttons are **generated dynamically using JavaScript**, which improves scalability and reduces repetitive HTML code. Each button triggers a centralized event handler that processes input based on its symbol.
 
-A big part of this project was also designing the UI completely from scratch using **custom CSS**. I focused on improving layout structure, spacing, and visual hierarchy to make the calculator feel more realistic and intuitive. Through multiple iterations, I refined things like button sizing, alignment using CSS Grid/Flexbox, hover/active states, and overall responsiveness to ensure a smooth user experience across different screen sizes.
+The application maintains two display areas:
+- **History display** for showing previous expressions  
+- **Main display** for showing current input and results  
 
-On the functionality side, I implemented multiple **event handlers** to manage both button clicks and keyboard input. The calculator listens for key presses so users can type numbers and operators directly, improving usability and accessibility. I also structured the logic to handle continuous calculations, operator chaining, and proper input formatting.
+Core logic is handled through a single function that processes input, manages edge cases, and ensures correct formatting for operators and decimals.
+
+A major focus of this project was building **robust input handling logic**, especially for:
+- Preventing multiple consecutive operators  
+- Handling replacement of operators dynamically  
+- Managing decimal placement per number segment  
+- Resetting and clearing calculator state cleanly  
+
+The UI was fully designed from scratch using **custom CSS Grid layout**, with careful attention to spacing, button sizing, and color contrast to mimic a real calculator interface.
 
 ---
 
 ### 🚀 What I Learned  
 - Using **vanilla JavaScript for full application logic**  
-- Handling **DOM manipulation and event listeners**  
-- Implementing **click and keyboard event handlers (`keydown`)**  
-- Building **arithmetic logic without external libraries**  
-- Managing **calculator state (current input, previous input, operator)**  
-- Handling **edge cases in chained calculations and input correction**  
-- Adding **keyboard support for faster user interaction**  
-- Implementing **clear, delete (backspace), and equals functionality**  
-- Preventing invalid inputs like multiple consecutive operators  
-- Designing and improving **custom CSS layouts from scratch**  
-- Using **Flexbox/Grid for precise UI alignment and structure**  
-- Creating **interactive UI states (hover, active, transitions)**  
-- Improving **visual hierarchy and spacing for better usability**  
-- Deploying a static project using **GitHub Pages**
+- Dynamically generating UI elements using **DOM manipulation (`createElement`)**  
+- Handling **click events with centralized event processing**  
+- Building **arithmetic logic using custom input parsing (no libraries)**  
+- Managing calculator state using **display-based logic**  
+- Handling **edge cases for operators and chained inputs**  
+- Preventing invalid inputs like consecutive operators  
+- Implementing **decimal validation per number segment**  
+- Structuring a clean **event-driven architecture**  
+- Using **CSS Grid for precise calculator layout design**  
+- Designing a full UI from scratch with **custom CSS variables and theming**  
+- Improving UX through **clear visual hierarchy and color grouping**
 
 ---
 
 ### 🛠️ Technologies Used  
 - HTML5  
-- CSS3  
+- CSS3 (Grid + Custom Variables)  
 - JavaScript (ES6+)  
-- GitHub Pages (Deployment)
 
 ---
 
 ### 🎯 Key Takeaway  
-This project strengthened my core JavaScript fundamentals by focusing on logic building, state management, and DOM manipulation without relying on frameworks. It also significantly improved my CSS skills, especially in building clean, structured, and responsive layouts from scratch while refining UI/UX details through iterative design improvements.
+This project strengthened my understanding of core JavaScript by focusing on input parsing, state handling, and DOM manipulation without external libraries. It also improved my ability to design structured UI layouts from scratch using CSS Grid while maintaining clean and reusable styling patterns.
 
+https://github.com/user-attachments/assets/8297213b-5618-4007-9c30-7d18bdee9ee7
